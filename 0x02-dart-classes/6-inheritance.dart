@@ -20,11 +20,11 @@ class User extends Password {
 
   static User fromJson(Map<dynamic, dynamic> userJson) {
     User user = User(
-      id: userJson['id'],
-      name: userJson['name'],
-      age: userJson['age'],
-      height: userJson['height'],
-      user_password: userJson['user_password'],
+      id: userJson['id'] ?? 0,
+      name: userJson['name'] ?? "",
+      age: userJson['age'] ?? 0,
+      height: userJson['height'] ?? 0.0,
+      user_password: userJson['user_password'] ?? "",
     );
     user.isValid();
     return user;
@@ -35,7 +35,7 @@ class User extends Password {
     return "User(id : $id ,name: $name, age: $age, height: $height, Password: ${isValid()})";
   }
 
-  set user_password(String newPassword) {
-    password = newPassword;
+  set user_password(String? newPassword) {
+    password = newPassword ?? "";
   }
 }
