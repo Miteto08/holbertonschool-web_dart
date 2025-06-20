@@ -7,7 +7,9 @@ class User extends Password {
   final int id;
 
   User({required this.name, required this.age, required this.height, required this.id, required String user_password}) 
-      : super(password: user_password);
+      : super(password: user_password) {
+    isValid();
+  }
 
   Map<String, dynamic> toJson() {
     return {
