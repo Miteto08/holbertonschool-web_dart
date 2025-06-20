@@ -9,7 +9,9 @@ class Password {
     return _password != null && 
            _password!.length >= 8 && 
            _password!.length <= 16 && 
-           _password!.contains(RegExp(r'[0-9]'));
+           _password!.contains(RegExp(r'[0-9]')) &&
+           _password!.contains(RegExp(r'[a-z]')) &&
+           _password!.contains(RegExp(r'[A-Z]'));
   }
 
   @override
