@@ -19,13 +19,15 @@ class User extends Password {
   }
 
   static User fromJson(Map<dynamic, dynamic> userJson) {
-    return User(
+    User user = User(
       id: userJson['id'] ?? 0,
       name: userJson['name'] ?? "",
       age: userJson['age'] ?? 0,
       height: userJson['height'] ?? 0.0,
       user_password: userJson['user_password'] ?? "",
     );
+    user.isValid();
+    return user;
   }
 
   @override
@@ -35,5 +37,6 @@ class User extends Password {
 
   set user_password(String newPassword) {
     password = newPassword;
+    isValid();
   }
 }
