@@ -8,19 +8,13 @@ Future<double> calculateTotal() async {
     final userId = user['id'];
     
     final ordersData = await fetchUserOrders(userId);
-    if (ordersData == null || ordersData.isEmpty) {
-      return -1;
-    }
     final orders = jsonDecode(ordersData);
     
     double total = 0;
     for (String product in orders) {
       final priceData = await fetchProductPrice(product);
-      if (priceData == null || priceData.isEmpty) {
-        return -1;
-      }
       final price = jsonDecode(priceData);
-      total += (price as num).toDouble();
+      total += price;
     }
     
     return total;
